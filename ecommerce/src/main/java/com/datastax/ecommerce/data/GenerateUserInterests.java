@@ -11,9 +11,9 @@ import java.nio.charset.Charset;
  */
 public class GenerateUserInterests {
 
-    private static String USERS = "users.txt";
-    private static String INTERESTS = "interests.txt";
-    private static String USER_INTERESTS = "user_interests.txt";
+    private static String USERS = "user.txt";
+    private static String INTERESTS = "interest.txt";
+    private static String USER_INTERESTS = "user_interest.txt";
 
     public static void main(String argv[]) {
         if (argv.length != 3) {
