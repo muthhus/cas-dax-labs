@@ -40,9 +40,16 @@ public class GenerateUserInterests {
         Charset charset = Charset.forName("US-ASCII");
         new File(USERS).delete();
         for (int u = 1; u <= nUsers; ++u) {
-            String toWrite = "abc\n";
+            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
             Files.append(toWrite, new File(USERS), charset);
-
+        }
+        for (int u = 1; u <= nUsers; ++u) {
+            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
+            Files.append(toWrite, new File(INTERESTS), charset);
+        }
+        for (int u = 1; u <= nUsers; ++u) {
+            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
+            Files.append(toWrite, new File(USER_INTERESTS), charset);
         }
     }
 }
