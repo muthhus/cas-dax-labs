@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Random;
 
 /**
  *
@@ -11,9 +12,11 @@ import java.nio.charset.Charset;
  */
 public class GenerateCustomIndicesDenormalize {
 
+
     private static String USERS = "user.txt";
     private static String INTERESTS = "interest.txt";
     private static String USER_INTERESTS = "user_interest.txt";
+
 
     public static void main(String argv[]) {
         if (argv.length != 3) {
@@ -39,6 +42,8 @@ public class GenerateCustomIndicesDenormalize {
         System.out.println("interest-density-percent: " + percentDensity);
         Charset charset = Charset.forName("US-ASCII");
         new File(USERS).delete();
+        // format of users file
+        // userid, name, email, separated by |
         for (int u = 1; u <= nUsers; ++u) {
             String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
             Files.append(toWrite, new File(USERS), charset);
