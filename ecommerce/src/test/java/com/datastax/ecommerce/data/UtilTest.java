@@ -32,7 +32,9 @@ public class UtilTest extends TestCase {
     public void testGenerateUserName() {
         System.out.println("generateUserName");
         Util instance = new Util();
-
+        for (int i = 0; i < 10; ++i) {
+            System.out.println(instance.generateUserName());
+        }
     }
 
     /**
