@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -13,12 +14,17 @@ import java.util.Random;
  */
 public class Util {
     // constants
-
-    public static String ROOT_DIR = "generated";
+    public static String ROOT_DIR_A = "generated_a";
+    public static String ROOT_DIR_B = "generated_b";
+    public static String ROOT_DIR_C = "generated_c";
     public static String USERS = "user.txt";
     public static String INTERESTS = "interest.txt";
     public static String USER_INTERESTS = "user_interest.txt";
     public static String NOUNS_FILE = "resources/nouns";
+    // formats
+    public static DecimalFormat interestFormat = new DecimalFormat("0000");
+    public static DecimalFormat userFormat = new DecimalFormat("000000");
+    public static DecimalFormat userInterestFormat = new DecimalFormat("00000000");
     // generators
     private Random ran = new Random();
     private static char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -61,4 +67,5 @@ public class Util {
             e.printStackTrace(System.out);
         }
     }
+    
 }
