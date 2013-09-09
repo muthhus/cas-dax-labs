@@ -11,10 +11,6 @@ import java.nio.charset.Charset;
  */
 public class GenerateCustomIndices {
 
-    private static String USERS = "user.txt";
-    private static String INTERESTS = "interest.txt";
-    private static String USER_INTERESTS = "user_interest.txt";
-
     public static void main(String argv[]) {
         if (argv.length != 3) {
             System.out.println("Arguments: number-users, number-interests, interest-density-percent");
@@ -32,24 +28,36 @@ public class GenerateCustomIndices {
         }
     }
 
-    private void generate(int nUsers, int nInterests, int percentDensity) throws IOException {
+    public void generate(int nUsers, int nInterests, int percentDensity) throws IOException {
         System.out.println("Generating users and interests tables with the following parameters:");
         System.out.println("number-users: " + nUsers);
         System.out.println("number-interests: " + nInterests);
         System.out.println("interest-density-percent: " + percentDensity);
+        new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
-        new File(USERS).delete();
+        // users
+        String userFile = Util.ROOT_DIR + "/" + Util.USERS;
+        Util util = new Util();
+        new File(userFile).delete();
         for (int u = 1; u <= nUsers; ++u) {
-            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
-            Files.append(toWrite, new File(USERS), charset);
+            String userName = util.generateUserName();
+            String domain = util.generateDomain();
+            String toWrite = u + "|" + userName + "|" + userName + "@" + domain + "\n";
+            Files.append(toWrite, new File(userFile), charset);
         }
-        for (int u = 1; u <= nUsers; ++u) {
-            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
-            Files.append(toWrite, new File(INTERESTS), charset);
+        // interests
+        String interestFile = Util.ROOT_DIR + "/" + Util.INTERESTS;
+        new File(interestFile).delete();
+        for (int i = 1; i <= nInterests; ++i) {
+            String toWrite = i + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
+            Files.append(toWrite, new File(interestFile), charset);
         }
-        for (int u = 1; u <= nUsers; ++u) {
-            String toWrite = u + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
-            Files.append(toWrite, new File(USER_INTERESTS), charset);
+        // user interests
+        String uiFile = Util.ROOT_DIR + "/" + Util.USER_INTERESTS;
+        new File(uiFile).delete();
+        for (int ui = 1; ui <= nUsers; ++ui) {
+            String toWrite = ui + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
+            Files.append(toWrite, new File(uiFile), charset);
         }
     }
 }
