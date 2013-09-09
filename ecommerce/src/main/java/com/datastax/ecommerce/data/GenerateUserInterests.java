@@ -16,7 +16,7 @@ public class GenerateUserInterests {
             System.out.println("Arguments: number-users, number-interests, interest-density-percent");
             System.exit(0);
         }
-        GenerateCustomIndices generator = new GenerateCustomIndices();
+        GenerateUserInterests generator = new GenerateUserInterests();
         int nUsers = Integer.parseInt(argv[0]);
         int nInterests = Integer.parseInt(argv[1]);
         int percentDensity = Integer.parseInt(argv[2]);
@@ -49,7 +49,8 @@ public class GenerateUserInterests {
         String interestFile = Util.ROOT_DIR + "/" + Util.INTERESTS;
         new File(interestFile).delete();
         for (int i = 1; i <= nInterests; ++i) {
-            String toWrite = i + "|" + "abc" + "|" + "abc@gmail.com" + "\n";
+            String interest = util.generateInterest();
+            String toWrite = i + "|" + interest + "|" + interest + " is a ..." + "\n";
             Files.append(toWrite, new File(interestFile), charset);
         }
         // user interests

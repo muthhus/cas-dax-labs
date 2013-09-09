@@ -10,7 +10,7 @@ import java.nio.charset.Charset;
  * @author Mark Kerzner
  */
 public class GenerateCustomIndices {
-
+    
     public static void main(String argv[]) {
         if (argv.length != 3) {
             System.out.println("Arguments: number-users, number-interests, interest-density-percent");
