@@ -10,7 +10,7 @@ public class Util {
     // constants
     public static String ROOT_DIR = "generated";
     public static String USERS = "user.txt";
-    public static String INTERESTS = "interest.txt";
+    public static String VIDEOS = "videos.txt";
     
     // generators
     private Random ran = new Random();
