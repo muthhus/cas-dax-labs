@@ -58,8 +58,8 @@ public class GenerateCustomIndices {
         // user interests
         String uiFile = Util.ROOT_DIR_B + "/" + Util.USER_INTERESTS;
         new File(uiFile).delete();
-        Map<String, String> userInterests = new HashMap<>();
-        Map <String, String> interestUsers = new HashMap<>();
+        Map<String, String> userInterests = new HashMap<String, String>();
+        Map <String, String> interestUsers = new HashMap<String, String>();
         for (int ui = 1; ui <= nUserInterests; ++ui) {
             String user = Util.userFormat.format(util.generateInt(1, nUsers));
             String interest = Util.interestFormat.format(util.generateInt(1, nInterests));
