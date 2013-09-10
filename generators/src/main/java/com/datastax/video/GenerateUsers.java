@@ -31,7 +31,7 @@ public class GenerateUsers {
     }
 
     private void generate(int nUsers, int nEmails) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
         if (nEmails < 1) nEmails = 1;
@@ -39,6 +39,7 @@ public class GenerateUsers {
         String userFile = Util.ROOT_DIR + "/" + Util.USERS;
         Util util = new Util();
         new File(userFile).delete();
+        Files.append("use videodb;\n", new File(userFile), charset);
         for (int u = 1; u <= nUsers; ++u) {
             StringBuilder insert = new StringBuilder();
             insert.append("INSERT INTO users (username, firstname, lastname, email, password, created_date) VALUES (");
@@ -53,7 +54,7 @@ public class GenerateUsers {
             }
             insert.append("],");
             insert.append("'").append(util.generateName()).append("',");
-            insert.append("'").append(dateFormat.format(new Date())).append("');");
+            insert.append("'").append(dateFormat.format(new Date())).append("');").append("\n");
             Files.append(insert.toString(), new File(userFile), charset);
         }
 
