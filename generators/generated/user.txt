@@ -1,2 +1,0 @@
-use videodb;
-INSERT INTO users (username, firstname, lastname, email, password, created_date) VALUES ('18134b9d-6222-4f0e-b06d-4ba1e6c62f50','onrgqcwmy','xlcbigytsbx',['mhaesillnnthk@msn.com'],'sragnufbcbg','2013-09-10 11:39:25');

@@ -35,28 +35,40 @@ public class GenerateVideos {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
-        if (nLocations < 1) nLocations = 1;
-        // users
-        String userFile = Util.ROOT_DIR + "/" + Util.USERS;
+        if (nLocations < 1) {
+            nLocations = 1;
+        }        
+        String videoFile = Util.ROOT_DIR + "/" + Util.VIDEOS;
         Util util = new Util();
-        new File(userFile).delete();
-        Files.append("use videodb;\n", new File(userFile), charset);
+        new File(videoFile).delete();
+        Files.append("use videodb;\n", new File(videoFile), charset);
         for (int u = 1; u <= nVideos; ++u) {
             StringBuilder insert = new StringBuilder();
-            insert.append("INSERT INTO users (username, firstname, lastname, email, password, created_date) VALUES (");
-            String firstName = util.generateName();
-            String lastName = util.generateName();
-            String username = UUID.randomUUID().toString();
-            insert.append("'").append(username).append("',").append("'").append(firstName).append("',").append("'").append(lastName).append("',");
-            insert.append("[");
+            insert.append(
+                    "INSERT INTO videos \n"
+                    + "(videoid, videoname, username, description, location, tags, upload_date)\n"
+                    + "VALUES\n"
+                    + "(");
+            String videoid = UUID.randomUUID().toString();
+            String videoname = util.generateName();
+            // TODO use already existing username from 'users' table
+            String username = util.generateName();
+            String description = util.generateName();
+            String domain = util.generateDomain();
+            insert.append(videoid).append(",'").append(videoname).append("',").
+                    append("'").append(username).append("','").append(description).append("',");
+            insert.append("{");
             for (int e = 0; e < nLocations; ++e) {
-                insert.append("'").append(util.generateName()).append("@").append(util.generateDomain()).append("'");
-                if (e < nLocations -1) insert.append(",");
+                insert.append("'").append(domain).append("'").append(" : ").append("'http://").append(domain).append("/").
+                        append(videoname).append("'");
+                if (e < nLocations - 1) {
+                    insert.append(",");
+                }
             }
-            insert.append("],");
-            insert.append("'").append(util.generateName()).append("',");
+            insert.append("},");
+            insert.append("{'cats', 'pets'},");
             insert.append("'").append(dateFormat.format(new Date())).append("');").append("\n");
-            Files.append(insert.toString(), new File(userFile), charset);
+            Files.append(insert.toString(), new File(videoFile), charset);
         }
 
     }
