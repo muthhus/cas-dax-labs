@@ -37,7 +37,7 @@ public class GenerateVideos {
         Charset charset = Charset.forName("US-ASCII");
         if (nLocations < 1) {
             nLocations = 1;
-        }        
+        }
         String videoFile = Util.ROOT_DIR + "/" + Util.VIDEOS;
         Util util = new Util();
         new File(videoFile).delete();
@@ -54,12 +54,14 @@ public class GenerateVideos {
             // TODO use already existing username from 'users' table
             String username = util.generateName();
             String description = util.generateName();
-            String domain = util.generateDomain();
+
             insert.append(videoid).append(",'").append(videoname).append("',").
                     append("'").append(username).append("','").append(description).append("',");
             insert.append("{");
             for (int e = 0; e < nLocations; ++e) {
-                insert.append("'").append(domain).append("'").append(" : ").append("'http://").append(domain).append("/").
+                String domain = util.generateDomain();
+                String fullDomain = e + domain;
+                insert.append("'").append(fullDomain).append("'").append(" : ").append("'http://").append(domain).append("/").
                         append(videoname).append("'");
                 if (e < nLocations - 1) {
                     insert.append(",");
