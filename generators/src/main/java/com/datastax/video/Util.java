@@ -11,6 +11,7 @@ public class Util {
     public static String ROOT_DIR = "generated";
     public static String USERS = "user.txt";
     public static String VIDEOS = "videos.txt";
+    public static String USER_VIDEO_INDEX = "user_video_index.txt";
     
     // generators
     private Random ran = new Random();
@@ -40,5 +41,4 @@ public class Util {
         int i = ran.nextInt(range) + min;
         return i;
     }
-    
 }
