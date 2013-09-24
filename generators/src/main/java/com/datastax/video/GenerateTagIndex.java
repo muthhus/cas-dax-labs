@@ -46,7 +46,7 @@ public class GenerateTagIndex {
         Files.append("use videodb;\n", new File(userFile), charset);
         for (int u = 1; u <= nTags; ++u) {
             StringBuilder tagPart = new StringBuilder();
-            tagPart.append("INSERT INTO tag_index (tag, videoid, upload_date,) VALUES (");
+            tagPart.append("INSERT INTO tag_index (tag, videoid, timestamp) VALUES (");
             String tag = util.generateName();
             tagPart.append("'").append(tag).append("',");
             // calculate the actual number of videos for this user
