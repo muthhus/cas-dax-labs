@@ -50,18 +50,18 @@ public class GenerateUserVideoIndex {
             String firstName = util.generateName();
             String lastName = util.generateName();
             String username = firstName + lastName;
-            userPart.append("'").append(username).append("',").append("'");
+            userPart.append("'").append(username).append("',");
             // calculate the actual number of videos for this user
             // here we take an average between 1 and 2 * average, but 
             // TODO use a more realistic distribution, with long tail
-            int nVideos = util.generateInt(1, 2 * nAverageVideos);
-            StringBuilder videoPart = new StringBuilder();
+            int nVideos = util.generateInt(1, 2 * nAverageVideos);          
             for (int e = 0; e < nVideos; ++e) {
+                StringBuilder videoPart = new StringBuilder();
                 String videoid = UUID.randomUUID().toString();
                 String videoname = util.generateName();
                 // date the video back up to a year
                 String uploadDate = dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * DAY_MILS);
-                videoPart.append(videoid).append("','").append(uploadDate).append("','").append(videoname).append("');").
+                videoPart.append(videoid).append(",'").append(uploadDate).append("','").append(videoname).append("');").
                         append("\n");
                 Files.append(userPart.toString() + videoPart.toString(), new File(userFile), charset);
             }
