@@ -61,8 +61,8 @@ public class GenerateUserVideoIndex {
                 String videoname = util.generateName();
                 // date the video back up to a year
                 String uploadDate = dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * DAY_MILS);
-                videoPart.append(videoid).append("',").append(uploadDate).append("',").append(videoname).append("',");
-                videoPart.append("'").append("');").append("\n");
+                videoPart.append(videoid).append("','").append(uploadDate).append("','").append(videoname).append("');").
+                        append("\n");
                 Files.append(userPart.toString() + videoPart.toString(), new File(userFile), charset);
             }
         }

@@ -39,9 +39,10 @@ public class GenerateUserVideoIndexTest {
     public void testMain() {
         System.out.println("main");
         String[] argv = new String[2];
-        argv[0] = "1";
-        argv[1] = "1";
+        argv[0] = "2";
+        argv[1] = "4";
         GenerateUserVideoIndex.main(argv);
         // TODO check that the expected files exists and has the expected number of records
+        assertTrue(true);
     }
 }
