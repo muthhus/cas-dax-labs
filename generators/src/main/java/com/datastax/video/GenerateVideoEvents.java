@@ -45,9 +45,9 @@ public class GenerateVideoEvents {
         for (int u = 1; u <= nVideos; ++u) {
             StringBuilder videoPart = new StringBuilder();
             videoPart.append(
-                    "INSERT INTO video_event \n"
-                    + "(videoid, username, event, event_timestamp, video_timestamp)\n"
-                    + "VALUES\n"
+                    "INSERT INTO video_event "
+                    + "(videoid, username, event, event_timestamp, video_timestamp)"
+                    + "VALUES"
                     + "(");
             String videoid = UUID.randomUUID().toString();
             // TODO use already existing username from 'users' table
@@ -67,8 +67,6 @@ public class GenerateVideoEvents {
                 eventPart.append(videoTimestamp).append(");\n");
                 Files.append(videoPart.toString() + eventPart.toString(), new File(videoEventsFile), charset);
             }
-            Files.append(videoPart.toString(), new File(videoEventsFile), charset);
         }
-
     }
 }
