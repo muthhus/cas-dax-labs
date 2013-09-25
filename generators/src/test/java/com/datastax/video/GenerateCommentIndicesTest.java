@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.datastax.video;
 
 import org.junit.After;
@@ -15,29 +11,29 @@ import static org.junit.Assert.*;
  *
  * @author Mark Kerzner
  */
-public class GenerateTagIndexTest {
-
-    public GenerateTagIndexTest() {
+public class GenerateCommentIndicesTest {
+    
+    public GenerateCommentIndicesTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of main method, of class GenerateTagIndex.
+     * Test of main method, of class GenerateCommentIndices.
      */
     @Test
     public void testMain() {
@@ -45,8 +41,7 @@ public class GenerateTagIndexTest {
         String[] argv = new String[2];
         argv[0] = "2";
         argv[1] = "4";
-        GenerateTagIndex.main(argv);
-        // TODO check that the expected files exists and has the expected number of records
+        GenerateCommentIndices.main(argv);
         assertTrue(true);
     }
 }

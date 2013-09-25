@@ -13,6 +13,8 @@ public class Util {
     public static String VIDEOS = "videos.txt";
     public static String USER_VIDEO_INDEX = "user_video_index.txt";
     public static String TAG_INDEX = "tag_index.txt";
+    public static String COMMENTS_BY_USER = "comments_by_user.txt";
+    public static String COMMENTS_BY_VIDEO = "comments_by_video.txt";
     
     // generators
     private Random ran = new Random();
