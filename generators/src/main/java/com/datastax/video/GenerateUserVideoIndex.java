@@ -31,9 +31,7 @@ public class GenerateUserVideoIndex {
         }
     }
 
-    private void generate(int nUsers, int nAverageVideos) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long DAY_MILS = 1000L * 60 * 60 * 24;
+    private void generate(int nUsers, int nAverageVideos) throws IOException {        
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
         if (nAverageVideos < 1) {
@@ -60,7 +58,7 @@ public class GenerateUserVideoIndex {
                 String videoid = UUID.randomUUID().toString();
                 String videoname = util.generateName();
                 // date the video back up to a year
-                String uploadDate = dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * DAY_MILS);
+                String uploadDate = Util.dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * Util.DAY_MILS);
                 videoPart.append(videoid).append(",'").append(uploadDate).append("','").append(videoname).append("');").
                         append("\n");
                 Files.append(userPart.toString() + videoPart.toString(), new File(userFile), charset);

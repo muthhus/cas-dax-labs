@@ -32,8 +32,6 @@ public class GenerateTagIndex {
     }
 
     private void generate(int nTags, int nAverageVideos) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long DAY_MILS = 1000L * 60 * 60 * 24;
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
         if (nAverageVideos < 1) {
@@ -57,7 +55,7 @@ public class GenerateTagIndex {
                 StringBuilder videoPart = new StringBuilder();
                 String videoid = UUID.randomUUID().toString();
                 // date the video back up to a year
-                String uploadDate = dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * DAY_MILS);
+                String uploadDate = Util.dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * Util.DAY_MILS);
                 videoPart.append(videoid).append(",'").append(uploadDate).append("');").append("\n");
                 Files.append(tagPart.toString() + videoPart.toString(), new File(userFile), charset);
             }

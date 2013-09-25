@@ -4,7 +4,6 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -36,8 +35,6 @@ public class GenerateCommentIndices {
     }
 
     private void generate(int nVideos, int nAverageComments) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long DAY_MILS = 1000L * 60 * 60 * 24;
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
         if (nAverageComments < 1) {
@@ -67,7 +64,7 @@ public class GenerateCommentIndices {
             int nComments = util.generateInt(1, 2 * nAverageComments);
             for (int c = 0; c < nComments; ++c) {
                 // date the comment back up to a year  
-                String commentDate = dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * DAY_MILS);
+                String commentDate = Util.dateFormat.format(new Date().getTime() - util.generateInt(0, 365) * Util.DAY_MILS);
                 StringBuilder commentPart = new StringBuilder();
                 String comment = util.generateName();
                 commentPart.append(commentDate).append("','").append(comment).append("');").append("\n");
