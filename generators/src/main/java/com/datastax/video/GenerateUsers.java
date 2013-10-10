@@ -12,7 +12,8 @@ import java.util.Date;
  * @author Mark Kerzner
  */
 public class GenerateUsers {
-
+    private static String userFile;
+    
     public static void main(String argv[]) {
         if (argv.length != 2) {
             System.out.println("Arguments: number-users, number-emails-per-user");
@@ -28,6 +29,7 @@ public class GenerateUsers {
             System.out.println("Problem writig files: " + e.getMessage());
             e.printStackTrace(System.out);
         }
+        System.out.println("Generated file: " + userFile);
     }
 
     private void generate(int nUsers, int nEmails) throws IOException {
@@ -36,7 +38,7 @@ public class GenerateUsers {
         Charset charset = Charset.forName("US-ASCII");
         if (nEmails < 1) nEmails = 1;
         // users
-        String userFile = Util.ROOT_DIR + "/" + Util.USERS;
+        userFile = Util.ROOT_DIR + "/" + Util.USERS;
         Util util = new Util();
         new File(userFile).delete();
         Files.append("use videodb;\n", new File(userFile), charset);
