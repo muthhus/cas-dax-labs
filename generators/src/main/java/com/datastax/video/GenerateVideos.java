@@ -72,6 +72,6 @@ public class GenerateVideos {
             insert.append("'").append(dateFormat.format(new Date())).append("');").append("\n");
             Files.append(insert.toString(), new File(videoFile), charset);
         }
-
+        System.out.println("Generated file: " + videoFile);
     }
 }

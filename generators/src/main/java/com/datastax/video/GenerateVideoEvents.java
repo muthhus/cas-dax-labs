@@ -4,7 +4,6 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
@@ -68,5 +67,6 @@ public class GenerateVideoEvents {
                 Files.append(videoPart.toString() + eventPart.toString(), new File(videoEventsFile), charset);
             }
         }
+        System.out.println("Generated file: " + videoEventsFile);
     }
 }

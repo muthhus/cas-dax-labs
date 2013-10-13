@@ -12,8 +12,6 @@ import java.util.Date;
  * @author Mark Kerzner
  */
 public class GenerateUsers {
-    private static String userFile;
-    
     public static void main(String argv[]) {
         if (argv.length != 2) {
             System.out.println("Arguments: number-users, number-emails-per-user");
@@ -29,16 +27,18 @@ public class GenerateUsers {
             System.out.println("Problem writig files: " + e.getMessage());
             e.printStackTrace(System.out);
         }
-        System.out.println("Generated file: " + userFile);
+
     }
 
     private void generate(int nUsers, int nEmails) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         new File(Util.ROOT_DIR).mkdirs();
         Charset charset = Charset.forName("US-ASCII");
-        if (nEmails < 1) nEmails = 1;
+        if (nEmails < 1) {
+            nEmails = 1;
+        }
         // users
-        userFile = Util.ROOT_DIR + "/" + Util.USERS;
+        String userFile = Util.ROOT_DIR + "/" + Util.USERS;
         Util util = new Util();
         new File(userFile).delete();
         Files.append("use videodb;\n", new File(userFile), charset);
@@ -52,13 +52,15 @@ public class GenerateUsers {
             insert.append("[");
             for (int e = 0; e < nEmails; ++e) {
                 insert.append("'").append(util.generateName()).append("@").append(util.generateDomain()).append("'");
-                if (e < nEmails -1) insert.append(",");
+                if (e < nEmails - 1) {
+                    insert.append(",");
+                }
             }
             insert.append("],");
             insert.append("'").append(util.generateName()).append("',");
             insert.append("'").append(dateFormat.format(new Date())).append("');").append("\n");
             Files.append(insert.toString(), new File(userFile), charset);
         }
-
+        System.out.println("Generated file: " + userFile);
     }
 }

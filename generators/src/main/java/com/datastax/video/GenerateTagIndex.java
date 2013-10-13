@@ -4,7 +4,6 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -60,5 +59,6 @@ public class GenerateTagIndex {
                 Files.append(tagPart.toString() + videoPart.toString(), new File(userFile), charset);
             }
         }
+        System.out.println("Generated file: " + userFile);
     }
 }

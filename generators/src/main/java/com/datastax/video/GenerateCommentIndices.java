@@ -72,5 +72,7 @@ public class GenerateCommentIndices {
                 Files.append(userPart.toString() + commentPart.toString(), new File(byUserFile), charset);
             }
         }
+        System.out.println("Generated file: " + byUserFile);
+        System.out.println("Generated file: " + byVideoFile);
     }
 }
