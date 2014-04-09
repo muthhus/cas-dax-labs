@@ -1,5 +1,6 @@
-package com.datastax.video;
+package com.hi.cassandra.video;
 
+import com.hi.cassandra.video.GenerateCommentIndices;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,9 +12,9 @@ import static org.junit.Assert.*;
  *
  * @author Mark Kerzner
  */
-public class GenerateVideoEventsTest {
+public class GenerateCommentIndicesTest {
     
-    public GenerateVideoEventsTest() {
+    public GenerateCommentIndicesTest() {
     }
     
     @BeforeClass
@@ -33,7 +34,7 @@ public class GenerateVideoEventsTest {
     }
 
     /**
-     * Test of main method, of class GenerateVideoEvents.
+     * Test of main method, of class GenerateCommentIndices.
      */
     @Test
     public void testMain() {
@@ -41,8 +42,7 @@ public class GenerateVideoEventsTest {
         String[] argv = new String[2];
         argv[0] = "2";
         argv[1] = "4";
-        GenerateVideoEvents.main(argv);
-        // TODO check that the expected files exists and has the expected number of records
+        GenerateCommentIndices.main(argv);
         assertTrue(true);
     }
 }

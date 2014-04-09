@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.datastax.video;
+package com.hi.cassandra.video;
 
+import com.hi.cassandra.video.GenerateTagIndex;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package com.datastax.video;
+package com.hi.cassandra.video;
 
 import com.google.common.io.Files;
 import java.io.File;

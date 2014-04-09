@@ -1,4 +1,4 @@
-package com.datastax.video;
+package com.hi.cassandra.video;
 
 import java.text.SimpleDateFormat;
 import java.util.Random;

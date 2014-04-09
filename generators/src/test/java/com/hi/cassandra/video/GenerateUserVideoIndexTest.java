@@ -1,5 +1,6 @@
-package com.datastax.video;
+package com.hi.cassandra.video;
 
+import com.hi.cassandra.video.GenerateUserVideoIndex;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,9 +12,9 @@ import static org.junit.Assert.*;
  *
  * @author Mark Kerzner
  */
-public class GenerateCommentIndicesTest {
+public class GenerateUserVideoIndexTest {
     
-    public GenerateCommentIndicesTest() {
+    public GenerateUserVideoIndexTest() {
     }
     
     @BeforeClass
@@ -33,7 +34,7 @@ public class GenerateCommentIndicesTest {
     }
 
     /**
-     * Test of main method, of class GenerateCommentIndices.
+     * Test of main method, of class GenerateUserVideoIndex.
      */
     @Test
     public void testMain() {
@@ -41,7 +42,8 @@ public class GenerateCommentIndicesTest {
         String[] argv = new String[2];
         argv[0] = "2";
         argv[1] = "4";
-        GenerateCommentIndices.main(argv);
+        GenerateUserVideoIndex.main(argv);
+        // TODO check that the expected files exists and has the expected number of records
         assertTrue(true);
     }
 }
